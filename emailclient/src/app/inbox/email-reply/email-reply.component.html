@@ -1,0 +1,8 @@
+<button (click)="onShowModal()" class="ui button primary">
+  Reply
+</button>
+<app-modal *ngIf="showModal" (dismiss)="showModal = false">
+  <div modalFooter>Reply</div>
+  <app-email-form [email]="email" (emailSubmit)="onSubmit($event)">
+  </app-email-form>
+</app-modal>

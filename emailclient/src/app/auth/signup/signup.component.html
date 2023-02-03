@@ -1,0 +1,29 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="authForm" class="ui form">
+  <app-input label="Username" [control]="usernameControl"></app-input>
+  <app-input label="Password" [control]="passwordControl" type="password"></app-input>
+  <app-input label="Password" [control]="passwordConfirmationControl" type="password"></app-input>
+  <div class="ui red basic label"
+       *ngIf=
+         "authForm.controls['password'].touched &&
+          authForm.controls['passwordConfirmation'].touched &&
+          authForm.errors"
+  >
+    <p *ngIf="authForm.errors['passwordsDontMatch']">
+      Passsword and Password Confirmation must match
+    </p>
+    <p *ngIf="authForm.errors['noConnection']">
+      No Internet Connection, failed to signup
+    </p>
+    <p *ngIf="authForm.errors['unknownError']">
+      Unknown error, failed to sign up
+    </p>
+  </div>
+
+  <div>
+    <button class="ui submit button primary">Submit</button>
+  </div>
+</form>
+<div>Form valid: {{authForm.valid}}</div>
+<div>Form errors: {{authForm.errors|json}}</div>
+<div>Form values: {{authForm.value|json}}</div>
+

@@ -1,0 +1,14 @@
+<h1>Typing Challenge</h1>
+<div>
+  <span
+    *ngFor="let letter of randomText.split(''); let i = index"
+    [class]="compare(letter, inputText[i])"
+   >{{letter}}</span>
+</div>
+<div>
+  <input (input)="onChangeInputText($event)" type="text">
+  {{inputText}}
+</div>
+<div *ngIf="randomText === inputText">
+  <h1>Success!</h1>
+</div>

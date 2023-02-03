@@ -1,0 +1,40 @@
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li  class="page-item">
+      <a class="page-link"
+         (click)="currentPage = currentPage -1"
+         [appClass]="{disabled: currentPage === 0}">
+        Prev
+      </a>
+    </li>
+    <ng-container
+     *appTimes="images.length; let i = index; let c = color"
+    >
+<!--      {{c}}-->
+      <li [appClass]="{active:i == currentPage}"
+          class="page-item"
+          *ngIf="checkWindowIndex(i)"
+      >
+        <a (click)="currentPage = i" class="page-link" href="#">{{i + 1}}</a>
+      </li>
+    </ng-container>
+    <li class="page-item"
+        [appClass]="{disabled: currentPage === images.length-1}">
+      <a class="page-link" (click)="currentPage = currentPage + 1">
+        Next
+      </a>
+    </li>
+  </ul>
+
+</nav>
+
+<div>
+  <h4 >
+    {{images[currentPage].title}}
+  </h4>
+  <img [src]="images[currentPage].url"/>
+</div>
+
+<ul *appTimes="5">
+  <li>ey</li>
+</ul>

@@ -1,0 +1,11 @@
+<nav *ngIf="numberOfPages">
+  <ul class="pagination">
+    <li class="pagination"
+        *ngFor="let page of [].constructor(numberOfPages), let i = index"
+        [ngClass]="i+1 === currentPage?'active':''"
+        (click)="onPageClick(i)"
+    >
+      <a class="page-link">{{i + 1}}</a>
+    </li>
+  </ul>
+</nav>
